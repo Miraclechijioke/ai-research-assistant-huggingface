@@ -1,10 +1,12 @@
-# 🧠 AI Research Assistant
+# 🧠 AI Research Assistant (Hugging Face Version)
 
-An intelligent PDF-based research assistant that summarizes and answers questions about academic papers, technical documents, invoices, and more. Built with **Streamlit**, **LangChain**, **FAISS**, and **OpenAI's GPT**.
+An intelligent PDF-based research assistant that **summarizes and answers questions** about academic papers, technical documents, invoices, and more.  
+Built with **Streamlit**, **LangChain**, **FAISS**, and **Hugging Face Transformers**.
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/Built%20With-LangChain-blue?style=flat-square" />
-  <img src="https://img.shields.io/badge/LLM-OpenAI-brightgreen?style=flat-square" />
+  <img src="https://img.shields.io/badge/LLM-HuggingFace-brightgreen?style=flat-square" />
   <img src="https://img.shields.io/badge/UI-Streamlit-orange?style=flat-square" />
 </p>
 
@@ -15,7 +17,7 @@ An intelligent PDF-based research assistant that summarizes and answers question
 - ✅ Upload a research paper (PDF)
 - 🧠 AI generates a **summary** instantly
 - 🔍 Ask context-aware questions and get **accurate answers**
-- 🧬 Uses vector search with **OpenAI Embeddings + FAISS**
+- 🧬 Uses vector search with **Hugging Face Embeddings + FAISS**
 - ⚙️ Modular code design: easy to extend or deploy
 
 ---
@@ -23,7 +25,7 @@ An intelligent PDF-based research assistant that summarizes and answers question
 ## 📂 Folder Structure
 
 ```yaml
-ai-research-assistant/
+ai-research-assistant-huggingface/
 │
 ├── app.py # Streamlit app interface
 ├── utils.py # PDF parsing, chunking, vector store setup
@@ -41,8 +43,8 @@ ai-research-assistant/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/Miraclechijioke/ai-research-assistant.git
-cd ai-research-assistant
+git clone https://github.com/Miraclechijioke/ai-research-assistant-huggingface.git
+cd ai-research-assistant-huggingface
 
 ```
 ### 2. Install dependencies
@@ -51,30 +53,44 @@ cd ai-research-assistant
 pip install -r requirements.txt
 ```
 
-### 3. Add your OpenAI API key
-Create a .env file in the root:
+### 3. (Optional) Add Hugging Face token
+If you want to use private models, create a .env file:
 
 ```ini
-OPENAI_API_KEY=your_openai_key_here
+HF_TOKEN=your_huggingface_token_here
 ```
 ### 4. Run the app
 ```bash
 streamlit run app.py
 ```
 
+
+## 🔄 Differences from the OpenAI Version
+
+| Feature                | OpenAI Version                               | Hugging Face Version                     |
+|------------------------|----------------------------------------------|------------------------------------------|
+| **Embeddings**         | `OpenAIEmbeddings` (API key required)       | `HuggingFaceEmbeddings` (free models)   |
+| **Summarization & QA** | GPT-based via OpenAI API                    | Transformers pipeline (`bart`, `t5`, etc.) |
+| **Cost**               | Requires paid API usage                     | Mostly free with local/public models    |
+| **Security**           | API key must be stored securely             | No API key needed for public models     |
+| **Flexibility**        | Limited to OpenAI's models                  | Can choose any Hugging Face model       |
+
+
 ## 🛠 Built With
--Streamlit
+Streamlit – Web UI
 
--LangChain
+LangChain – LLM pipelines and vector store integration
 
--FAISS
+FAISS – Vector similarity search
 
--OpenAI API
+Hugging Face Transformers – Embeddings, summarization & QA
 
--PyMuPDF
+PyMuPDF – Extract text from PDFs
 
 ## 🛡️ Security Note
-Your OpenAI API key is required to run this app. Never expose your key publicly. Use .streamlit/secrets.toml or environment variables to keep it safe.
+No OpenAI API key is required.
+If you use a Hugging Face token, never expose it publicly.
+Use .streamlit/secrets.toml or .env for security.
 
 ## 👨‍💻 Author
 **Miracle Chijioke Alozie**

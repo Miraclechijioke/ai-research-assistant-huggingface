@@ -1,11 +1,9 @@
-PyMuPDF
-langchain
-openai
-faiss-cpu
-python-dotenv
-streamlit
-langchain-openai
-tiktoken
-langchain-community
-
-
+PyMuPDF              # For extracting text from PDFs
+langchain            # requiredeeded for chains, vector stores, etc.
+faiss-cpu            # For vector storage and similarity search
+python-dotenv        # For environment variables
+streamlit            # For the web app
+langchain-community  # For FAISS and HuggingFaceEmbeddings
+transformers         # Hugging Face core library
+huggingface-hub      # To load models from Hugging Face Hub
+sentence-transformers # For Hugging Face text embeddings
