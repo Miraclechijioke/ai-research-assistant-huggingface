@@ -27,12 +27,12 @@ if st.sidebar.button("🗑️ Clear Cache"):
 def load_pipelines():
     summarizer = pipeline(
         "summarization",
-        model="sshleifer/distilbart-cnn-12-6",  # Smaller & faster than bart-large-cnn
-        tokenizer="sshleifer/distilbart-cnn-12-6"
+        model="facebook/bart-large-cnn",
+        tokenizer="facebook/bart-large-cnn"
     )
     qa = pipeline(
         "question-answering",
-        model="distilbert-base-cased-distilled-squad"  # Faster than roberta-base-squad2
+        model="deepset/roberta-base-squad2"  # Faster than roberta-base-squad2
     )
     return summarizer, qa
 
@@ -53,7 +53,9 @@ if uploaded_pdf:
 
     # === Summarize Document ===
     with st.spinner("Summarizing the document..."):
-        summary = summarizer(text[:3000], max_length=200, min_length=50, do_sample=False)[0]["summary_text"]
+        all_chunks = split_text(text)
+        chunk_summaries = [summarizer(chunk, max_length=200, min_length=50, do_sample=False)[0]['summary_text'] for chunk in all_chunks[:3]]
+        summary = " ".join(chunk_summaries)
 
     st.markdown("### 📌 Document Summary:")
     st.write(summary)
