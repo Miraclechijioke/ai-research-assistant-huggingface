@@ -32,7 +32,7 @@ def load_pipelines():
     )
     qa = pipeline(
         "question-answering",
-        model="deepset/roberta-base-squad2"  # Faster than roberta-base-squad2
+        model="deepset/roberta-base-squad2"
     )
     return summarizer, qa
 
@@ -54,7 +54,7 @@ if uploaded_pdf:
     # === Summarize Document ===
     with st.spinner("Summarizing the document..."):
         all_chunks = split_text(text)
-        chunk_summaries = [summarizer(chunk, max_length=200, min_length=50, do_sample=False)[0]['summary_text'] for chunk in all_chunks[:3]]
+        chunk_summaries = [summarizer(chunk, max_length=min(200, len(text) // 2), min_length=50, do_sample=False)[0]['summary_text'] for chunk in all_chunks[:3]]
         summary = " ".join(chunk_summaries)
 
     st.markdown("### 📌 Document Summary:")

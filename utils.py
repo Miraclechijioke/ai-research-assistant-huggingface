@@ -1,7 +1,7 @@
 import fitz  # PyMuPDF
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 import os, hashlib, pickle
 
 # Extract text from PDF
