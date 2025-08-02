@@ -9,3 +9,5 @@ test_env.py
 app_test.py
 .ipynb_checkpoints/
 .env
+.cache/*
+!.cache/.gitkeep
