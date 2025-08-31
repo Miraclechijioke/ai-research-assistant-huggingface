@@ -7,3 +7,4 @@ langchain-huggingface  # For FAISS and HuggingFaceEmbeddings
 transformers         # Hugging Face core library
 huggingface-hub
 sentence-transformers # For Hugging Face text embeddings
+langchain-community 
